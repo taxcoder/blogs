@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tree的博客-留言板</title>
+    <div th:replace="~{common/LoadCommon::icon}"></div>
+    <link rel="stylesheet" th:href="@{/css/reception/messageBorad/messageBoard.css}">
+    <link rel="stylesheet" href="/css/common.css">
+    <div th:replace="~{common/LoadCommon::loadCss}"></div>
+</head>
+<body>
+<div th:replace="~{common/common::header}"></div>
+<div class="friendLink">
+    <div class="friendLinkContent">
+        <div class="friendLinkClose"><div class="friendLinkCloseTop"><i class="layui-icon layui-icon-close"></i></div></div>
+        <div class="friendLinkInfo">
+           <div class="friendLinkInfoInput">
+               <div class="friendLinkInfoInputDiv">
+                   <div class="Web">
+                       <i class="layui-icon layui-icon-website"></i>
+                       <input type="text" placeholder="网站地址">
+                   </div>
+                   <div class="Image">
+                       <i class="layui-icon layui-icon-picture"></i>
+                       <input type="text" placeholder="头像链接">
+                   </div>
+                   <div class="Name">
+                       <i class="layui-icon layui-icon-username"></i>
+                       <input type="text" placeholder="名称">
+                   </div>
+                   <div class="Desc">
+                       <i class="layui-icon layui-icon-edit"></i>
+                       <input type="text" placeholder="描述">
+                   </div>
+                   <div class="Email">
+                       <i class="layui-icon layui-icon-email"></i>
+                       <input type="text" placeholder="邮箱(友链增加后邮件提醒)">
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="friendLinkSubmit"><button>发送</button></div>
+    </div>
+</div>
+<div class="board">
+    <div class="boardContent">
+        <div class="adminInfo">
+            <div class="siteInformation">
+                <h3>本站信息<button>申请友链</button></h3><hr/>
+                <p>
+                    名称：Tree的博客<br/>
+                    描述：不定期分享自己学到的新知识<br/>
+                    网站：https://tanxiangblog.com<br/>
+                    头像：https://tanxiangblog.com/img/head.png
+                </p>
+            </div>
+            <div class="simpleAsk">
+                <h3>简单要求</h3><hr/>
+                <p>
+                    1、礼尚往来<br/>
+                    2、非采集站<br/>
+                    3、最好是https<br/>
+                    4、图片后缀需为jpg、jpeg、png
+
+                </p>
+            </div>
+        </div>
+        <ul id="discussUl" th:fragment="discuss">
+            <li style="display: none">
+                <div class="discussBoard">
+                    <div id="oneDiscuss">
+                        <div class="discussOne">
+                            <div class="discussUserInfo">
+                                <img th:src="@{https://www.tanxiangblog.com/images/logo.png}" alt=""/>
+                                <div>
+                                    <div>
+                                        <span class="dName"><a th:href="@{https://www.tanxiangblog.com}" target="_blank">tanxiang</a></span>
+                                        <span class="dReply">回复</span>
+                                        <span class="dReplyName">Tree</span>
+                                    </div>
+                                    <span class="dTime">2020-08-17 10:16:30</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="discussContent">正在测试中！</div>
+                        <div class="reply">
+                            <button onclick="replyButton(this)">回复</button>
+                        </div>
+                        <ul id="doubleDiscussUl">
+                            <li style="display: none">
+                                <div class="discussDouble">
+                                    <div class="discussOne">
+                                        <div class="discussUserInfo">
+                                            <img th:src="@{https://www.tanxiangblog.com/images/logo.png}" alt=""/>
+                                            <div>
+                                                <div>
+                                                    <span class="dName"><a th:href="@{https://www.tanxiangblog.com}" target="_blank">tanxiang</a></span>
+                                                    <span class="dReply">回复</span>
+                                                    <span class="dReplyName">Tree</span>
+                                                </div>
+                                                <span class="dTime">2020-08-17 10:16:30</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="discussContent">正在测试中！</div>
+                                    <div class="reply">
+                                        <button onclick="replyButtonDouble(this)">回复</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="doubleDiscussLi" style="display:none" class="doubleDis">
+                                <p class="submitContent">发布评论<button class="discussClose" onclick="discussClose(this)">放弃</button></p>
+                                <div class="userInfo">
+                                    <div class="inputOne">
+                                        <div class="InputUUID">
+                                            <i class="layui-icon layui-icon-website"></i>
+                                            <input type="text" placeholder="网站网站*">
+                                        </div>
+                                        <div class="InputName">
+                                            <i class="layui-icon layui-icon-username"></i>
+                                            <input type="text" placeholder="用户名*" onblur="dUser(this)">
+                                        </div>
+                                    </div>
+                                    <div class="inputTwo">
+                                        <div class="InputEmail">
+                                            <i class="layui-icon layui-icon-email"></i>
+                                            <input type="text" placeholder="邮箱*" onblur="dEmail(this)">
+                                        </div>
+                                        <div class="InputHeader">
+                                            <i class="layui-icon layui-icon-picture"></i>
+                                            <input type="text" placeholder="头像链接" onblur="dImage(this)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="writePanel">
+                                    <textarea class="write" id="textReal"></textarea>
+                                    <input type="hidden">
+                                    <button type="submit" class="submitWrite" id="submitReal" onclick="submitDiscuss(this)">发布</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <p class="submitContent">发布评论</p>
+                <div class="userInfo">
+                    <div class="inputOne">
+                        <div class="InputUUID">
+                            <i class="layui-icon layui-icon-website"></i>
+                            <input type="text" placeholder="网站网站(http://或https://)" class="websiteI">
+                        </div>
+                        <div class="InputName" id="nameIn">
+                            <i class="layui-icon layui-icon-username"></i>
+                            <input type="text" placeholder="用户名*" class="usernameI">
+                        </div>
+                    </div>
+                    <div class="inputTwo">
+                        <div class="InputEmail">
+                            <i class="layui-icon layui-icon-email"></i>
+                            <input type="text" placeholder="邮箱*" class="emailI">
+                        </div>
+                        <div class="InputHeader" id="imageIn">
+                            <i class="layui-icon layui-icon-picture"></i>
+                            <input type="text" placeholder="头像链接" class="imageI">
+                        </div>
+                    </div>
+                </div>
+                <div class="writePanel">
+                    <textarea class="write" id="RealText"></textarea>
+                    <button type="submit" class="submitWrite" id="RealSubmit">发布</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:replace="~{blog/reception/home::footer}"></div>
+<div th:replace="~{common/LoadCommon::loadJS}"></div>
+<script type="text/javascript" th:src="@{/js/reception/messageBoard/messageBoard.js}"></script>
+</body>
+</html>

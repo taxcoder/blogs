@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanx.blogs.dao.user.UserMapper">
+<insert id="userRegister" parameterType="com.tanx.blogs.pojo.model.User">
+        insert into
+        user(`loginName`,`username`,`password`,`createTime`,`email`,`headImg`)
+        values(#{loginName},#{username},#{password},#{createTime},#{email},#{headImg});
+    </insert>
+
+    <update id="updateUserActive" parameterType="map">
+        update `user` set active = 1 where `loginName` = #{loginName} and `email` = #{email};
+    </update>
+
+    <select id="userLogin" resultType="com.tanx.blogs.pojo.model.User">
+            select * from `user` where `loginName` = #{loginName} and `password`=#{password};
+    </select>
+</mapper >

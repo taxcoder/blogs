@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>load</title>
+    <!-- 加载css -->
+    <link rel="shortcut icon" type="images/x-icon" href="https://www.tanxiangblog.com/images/favorite.ico" th:fragment="icon">
+    <div th:fragment="loadCss">
+        <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.5.6/css/layui.css" id="layui-css">
+        <script type="application/javascript" src="/js/reception/isCssEmpty.js"></script>
+    </div>
+</head>
+<body>
+
+<!-- 加载js -->
+<div th:fragment="loadJS">
+    <script type='application/javascript' src='https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script type='application/javascript' src='/js/reception/isJQuery.js'></script>
+    <script type='text/javascript' src='/js/reception/commonest/register.js'></script>
+    <script type='text/javascript' src='/js/reception/commonest/login.js'></script>
+    <script type='text/javascript' src='/js/reception/commonest/updatePwd.js'></script>
+    <script type='text/javascript' src='/js/reception/commonest/forgetPwd.js'></script>
+    <script type='text/javascript' src='/js/reception/commonest/commonest.js'></script>
+    <!-- cdn -->
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js' id="TweenMax"></script>
+    <script type='application/javascript' src='https://cdn.bootcss.com/blueimp-md5/2.5.0/js/md5.min.js'></script>
+    <script type='application/javascript' src='https://www.layuicdn.com/layui-v2.5.6/layui.js' id="layuiJs"></script>
+    <script type='application/javascript' src='/js/reception/isCdnEmpty.js'></script>
+    <script type='application/javascript' src='https://api.oss.tanxiangblog.com/js/ScrollToPlugin.min.js'></script>
+</div>
+</body>
+</html>

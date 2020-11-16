@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>公共</title>
+</head>
+<body>
+<div class="user" th:fragment="user">
+    <div class="login-register">
+        <div class="login-input">
+            <div class="close">
+                <div class="close-middle">
+                    <div>用户登录</div>
+                    <div>
+                        <button class="layui-icon layui-icon-close page-close" onclick="PageClose()"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="input">
+                <div class="username">
+                    <div class="username-input"><input type="text" placeholder="登录名" id="username">
+                    </div>
+                </div>
+                <div class="password">
+                    <div class="password-input"><input type="password" placeholder="密码" id="password" autocomplete="off">
+                    </div>
+                    <div><a id="activation" title="点击激活">账户未激活则无法进行登录</a></div>
+                </div>
+            </div>
+            <div class="login">
+                <button class="button-login">登录</button>
+                <div class="register">
+                    <p id="forgetPassword" onclick="forgetPassword()">忘记密码？</p>
+                    <a id="register" href="javascript:void(0)" onclick="UserRegister()"><span>快速注册</span></a>
+                </div>
+            </div>
+            <div class="other">
+                <div>其他登录方式</div>
+                <div>
+                    <table>
+                        <tr>
+                            <td><img th:src="@{https://www.tanxiangblog.com/images/QQ.svg}" alt="QQ登录"></td>
+                            <td class="github"><img th:src="@{https://www.tanxiangblog.com/images/github.svg}" alt="github登录"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="register-input">
+            <div class="close">
+                <div class="close-middle">
+                    <div>用户注册</div>
+                    <div>
+                        <button class="layui-icon layui-icon-close page-close" onclick="PageClose()"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="user-register">
+                <div>
+                    <div>
+                        <div class="login-name"><input type="text" name="loginName" id="registerLoginName" autofocus
+                                                       placeholder="登录名(必填)"
+                                                       autocomplete="off" class="input-msg"></div>
+                        <div class="show-name"><input type="text" name="username" id="registerUserName"
+                                                      autocomplete="off" placeholder="昵称(必填)"
+                                                      maxlength="10"
+                                                      class="input-msg"></div>
+                        <div class="pwd"><input type="password" name="password " placeholder="密码(必填)" id="registerPassword"
+                                                autocomplete="off"
+                                                class="input-msg"></div>
+                        <div class="affirm-pwd"><input type="password" name="affirmPwd" id="registerAffirmPassword"
+                                                       placeholder="确认密码(必填)"
+                                                       autocomplete="off" class="input-msg"></div>
+                        <div class="email"><input type="text" name="email" id="registerEmail" placeholder="邮箱(必填)"
+                                                  autocomplete="off"
+                                                  class="input-msg"></div>
+                    </div>
+                </div>
+                <div class="verify-img">
+                    <div class="return-login"><span onclick="goLogin()">去登录</span></div>
+                    <div class="verify">
+                        <div class="verify-check">
+                            <div class="check-input"><input type="text" id="checkCode" class="verify-check-number input-msg" placeholder="验证码" autocomplete="off"></div>
+                            <div class="check-img">
+                                <a class="changeImage">
+                                    <img th:src="@{/api/admin/v1/get/code}" alt="" class="ing-check-verify" id="codeImg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-register">
+                <div class="register-btn">
+                    <button id="submit-btn">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="forgetPwd">
+        <div class="forgetPwd-top">
+            <div class="forgetText"><p>忘记密码</p></div>
+            <div class="forgetClose"><i class="layui-icon layui-icon-close" onclick="forgetClose()"></i></div>
+        </div>
+        <div class="forgetPwd-middle">
+            <input type="text" placeholder="请输入登录名" id="loginName" autocomplete="off" onblur="loginNameBlur()">
+            <input type="text" placeholder="请输入注册邮箱" id="email" autocomplete="off" onblur="emailBlur()">
+            <div class="Experimental">
+                <input type="text" placeholder="请输入验证码" id="code" autocomplete="off">
+                <button onclick="getCode()">获取验证码</button>
+            </div>
+            <input type="password" placeholder="新密码" id="nPassword" autocomplete="off" class="none-password" onblur="isPasswordForget()">
+            <input type="password" placeholder="确认密码" id="affPassword" autocomplete="off" class="none-password" onblur="isAffPasswordForget()">
+        </div>
+        <div class="forget-bottom">
+            <button onclick="forgetSubmit()">更改密码</button>
+            <p onclick="goToLogin()">去登录</p>
+        </div>
+    </div>
+    <div class="updatePwd" sec:authorize="isAuthenticated()">
+        <div class="updatePwd-top">
+            <div class="updateText"><p>修改密码</p></div>
+            <div class="updateClose"><i class="layui-icon layui-icon-close" onclick="updateClose()"></i></div>
+        </div>
+        <div class="updatePwd-middle">
+            <input type="text" placeholder="请输入验证码" id="yesCode" autocomplete="off" onblur="codeBlur()">
+            <input type="password" placeholder="请输入新密码" id="newPassword" autocomplete="off" onblur="passwordBlur()">
+            <div class="Experimental">
+                <input type="password" placeholder="确认密码" id="newAffPassword" autocomplete="off" onblur="affPasswordBlur()">
+            </div>
+        </div>
+        <div class="update-bottom">
+            <button onclick="changePassword()">修改</button>
+        </div>
+    </div>
+</div>
+<!--header 头部-->
+<div class="header" th:fragment="header">
+    <div class="header-nav">
+        <div class="header-nav-list">
+            <div class="header-logo">
+                <div id="logo"><a th:href="@{/home}"><img th:src="@{https://www.tanxiangblog.com/images/logo.png}" alt="" id="tx"/></a></div>
+            </div>
+            <!--列表-->
+            <div class="direction word">
+                <a th:href="@{/home}" th:class="${active=='home'?'change active':'change'}">首页</a>
+            </div>
+            <div class="direction word">
+                <a th:href="@{/footmark}" th:class="${active=='footmark'?'change active':'change'}">足迹</a>
+            </div>
+            <div class="direction word">
+                <a th:href="@{/informal}" th:class="${active=='informal'?'change active':'change'}">随笔</a>
+            </div>
+            <!--登录-->
+            <div class="login">
+                <button type="button" class="layui-btn layui-btn-normal btn-login" onclick="login()"
+                        sec:authorize="!isAuthenticated()">
+                    登录</button>
+                <div class="head-sculpture" sec:authorize="isAuthenticated()">
+                    <img th:src="@{${session.user.getHeadImg()}}" alt="" class="head-image"/>
+                    <div class="option-list">
+                        <div class="option-content">
+                            <ul>
+                                <li class="User-Username"><p th:text="${session.user.getUsername()}"></p></li>
+                                <li><a id="getNumber" onclick="contentInfo()">忘记密码</a></li>
+                                <li><a th:href="@{/superRank}" >进入后台</a></li>
+                                <li><a th:href="@{/logout}">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="notice">
+                <a th:href="@{/journal}" title="更新日志">
+                    <i th:class="${active=='journal'?'layui-icon layui-icon-read active':'layui-icon layui-icon-read information-notice'}"></i>
+                </a>
+            </div>
+            <div class="search">
+                <div class="data-search">
+                    <div class="input-search">
+                        <input type="text" class="search-box" maxlength="30" placeholder="想搜什么?" onkeyup="searchData()"/>
+                        <a class="search-a">
+                            <i class="layui-icon layui-icon-search core-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="middle-between-paging" th:fragment="page">
+    <div class="middle-between-paging-style">
+        <div class="middle-between-paging-style-page" id="div-left"><i
+                class="layui-icon layui-icon-left"></i></div>
+        <div class="middle-between-paging-style-ul">
+            <ul>
+                <li class="btnColor">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+        <div class="middle-between-paging-style-page" id="div-right">
+            <i class="layui-icon layui-icon-right"></i></div>
+    </div>
+</div>
+
+<!--左边区域-->
+<div class="left-area" th:fragment="left-area">
+    <!--个人信息-->
+    <div class="info" th:fragment="info">
+        <div class="head-img">
+            <div class="out-ring">
+                <div th:replace="~{common/common::imgages}"></div>
+            </div>
+        </div>
+        <div class="only-info">
+            <div class="only-info-basic username"><h2 th:text="${application.super.getUsername()}"></h2></div>
+            <div class="only-info-basic sign"><p th:text="${application.super.getSign()}"></p></div>
+            <!--现地址:后台可以设置-->
+            <div class="only-info-basic address"><i class="layui-icon layui-icon-location"></i>
+                <p th:text="${application.super.getAddress()}"></p></div>
+        </div>
+        <div class="record">
+            <!--文章：数据库获取-->
+            <div class="data">
+                <div class="data-number data-digit"><p th:text="${application.datas.getArchivesAllNumber()}"></p></div>
+                <div class="data-number data-font"><p>文章</p></div>
+            </div>
+            <!--访问-->
+            <div class="data">
+                <div class="data-number data-digit"><p th:text="${application.datas.getDailyCount()}"></p></div>
+                <div class="data-number data-font"><p>随笔</p></div>
+            </div>
+            <!--随笔-->
+            <div class="data">
+                <div class="data-number data-digit"><p th:text="${application.datas.getVisitorCount()}"></p></div>
+                <div class="data-number data-font"><p>访问</p></div>
+            </div>
+        </div>
+        <!--其他平台链接-->
+        <div class="link">
+            <div class="link-set">
+                <a th:href="@{https://blog.csdn.net/sabstarb}" target="_Blank">
+                    <img th:src="@{https://www.tanxiangblog.com/images/csdn.svg}" alt="CSDN">
+                </a>
+            </div>
+            <div class="link-set">
+                <a th:href="@{https://github.com/taxcoder}" target="_Blank">
+                    <img th:src="@{https://www.tanxiangblog.com/images/github.svg}" alt="github">
+                </a>
+            </div>
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+            <!--                    <div class="link-set"></div>-->
+        </div>
+    </div>
+    <div class="type" th:fragment="type">
+        <div class="type-new">
+            <div class="type-new-context">
+                <p class="type-p">分类</p>
+            </div>
+        </div>
+        <div class="type-new-li">
+            <ul>
+                <li th:each="type:${application.datas.getTypes()}">
+                    <div class="filesLi">
+                        <i class="files"><img th:src="@{https://www.tanxiangblog.com/images/file.svg}" alt="分类的image"></i>
+                        <a th:href="@{'/home.html/types/'+${type.getTypeName()}}" th:title="${type.getTypeName()}"><p th:text="${type.getTypeName()}"></p></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--标签-->
+    <div class="tag" th:fragment="tag">
+        <div class="tag-title">
+            <div class="tag-title-cloud"><p>标签云</p></div>
+        </div>
+        <div class="tag-tags">
+            <table>
+                <tr>
+                    <td th:each="tag:${application.datas.getTags()}"><a th:href="@{'/home/tags/'+${tag.getTagName()}}" th:title="${tag.getTagName()}" th:text="${tag.getTagName()}"></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--右边区域-->
+<div class="right-area" th:fragment="right-area">
+    <!--公告栏-->
+    <div class="bulletin-board" th:fragment="bulletin">
+        <div class="bulletin-board-text">
+            <div class="bulletin-board-text-p"><p>公告栏</p></div>
+        </div>
+        <div class="bulletin-board-context">
+            <div class="bulletin-board-context-p"><p th:utext="${application.datas.bulletinBoard}"></p></div>
+        </div>
+    </div>
+    <div class="more">
+        <div class="more-top"><p>更多</p></div>
+        <div class="more-content">
+            <div class="more-content-top">
+                <p class="more-content-top-one"><i class="layui-icon layui-icon-link"></i>&nbsp;<a th:href="@{/friend}">友链</a></p>
+                <p class="more-content-top-two" style="display: none"><i class="layui-icon layui-icon-rmb"></i>&nbsp;<a href="">赞助博主</a></p>
+                <p class="more-content-top-three" style="display: none"><i class="layui-icon layui-icon-file"></i>&nbsp;<a href="">我的项目</a>
+                </p>
+            </div>
+            <div class="more-content-middle">
+                <p class="more-content-middle-one"></p>
+                <p class="more-content-middle-two"></p>
+                <p class="more-content-middle-three"></p>
+            </div>
+            <div class="more-content-bottom">
+                <p class="more-content-bottom-one"></p>
+                <p class="more-content-bottom-two"></p>
+                <p class="more-content-bottom-three"></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="music" style="display: none">
+        <div>音樂播放器</div>
+    </div>
+    <!--热门文章-->
+    <div class="popular" th:fragment="popular">
+        <div class="popular-new">
+            <div class="popular-new-context">
+                <p class="classify-p">最新文章</p>
+                <p class="popular-p">最热文章</p>
+                <p class="discuss-p">最新评论</p>
+            </div>
+        </div>
+        <div class="popular-new-li">
+            <ul>
+                <li class="popular-new-li" th:each="archivesNew:${application.datas.getArchivesNews()}">
+                    <div class="popular-image">
+                        <div th:replace="~{common/common::imgages}"></div>
+                    </div>
+                    <div class="popular-text">
+                        <div class="popular-text-title">
+                            <a th:href="@{'/archives/'+${archivesNew.getArchivesId()}}" th:title="${archivesNew.getTitle()}" target="_blank">
+                                <p class="archives-common-title" th:text="${archivesNew.getTitle()}"></p>
+                            </a>
+                        </div>
+                        <div class="popular-text-date">
+                            <p></p>
+                            <p th:text="${#dates.format(archivesNew.getUploadTime(),'yyyy-MM-dd')}"></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ul id="discussUl" th:fragment="discuss">
+    <li style="display: none">
+        <div class="discussDaily">
+            <div id="oneDiscuss">
+                <div class="discussOne">
+                    <div class="discussUserInfo">
+                        <img th:src="@{https://www.tanxiangblog.com/images/logo.png}" alt="用户的头像"/>
+                        <div>
+                            <div>
+                                <span class="dName">tanxiang</span>
+                                <span class="dReply">回复</span>
+                                <span class="dReplyName">Tree</span>
+                            </div>
+                            <span class="dTime">2020-08-17 10:16:30</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="discussContent">正在测试中！</div>
+                <div class="reply">
+                    <button onclick="replyButton(this)">回复</button>
+                </div>
+                <ul id="doubleDiscussUl">
+                    <li style="display: none">
+                        <div class="discussDouble">
+                            <div class="discussOne">
+                                <div class="discussUserInfo">
+                                    <img th:src="@{https://www.tanxiangblog.com/images/logo.png}" alt="用户的头像"/>
+                                    <div>
+                                        <div>
+                                            <span class="dName">tanxiang</span>
+                                            <span class="dReply">回复</span>
+                                            <span class="dReplyName">Tree</span>
+                                        </div>
+                                        <span class="dTime">2020-08-17 10:16:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="discussContent">正在测试中！</div>
+                            <div class="reply">
+                                <button onclick="replyButtonDouble(this)">回复</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="doubleDiscussLi" style="display:none" class="doubleDis">
+                        <p class="submitContent">发布评论<button class="discussClose" onclick="discussClose(this)">放弃</button></p>
+                        <div class="userInfo">
+                            <div class="inputOne">
+                                <div class="InputUUID">
+                                    <i ><img th:src="@{https://www.tanxiangblog.com/images/bilibili.svg}" alt="哔哩哔哩的logo"></i>
+                                    <input type="text" placeholder="b站uuid" readonly disabled>
+                                </div>
+                                <div class="InputName">
+                                    <i class="layui-icon layui-icon-username"></i>
+                                    <input type="text" placeholder="用户名*" onblur="dUser(this)">
+                                </div>
+                            </div>
+                            <div class="inputTwo">
+                                <div class="InputEmail">
+                                    <i class="layui-icon layui-icon-email"></i>
+                                    <input type="text" placeholder="邮箱*" onblur="dEmail(this)">
+                                </div>
+                                <div class="InputHeader">
+                                    <i class="layui-icon layui-icon-picture"></i>
+                                    <input type="text" placeholder="头像链接" onblur="dImage(this)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="writePanel">
+                            <textarea class="write" id="textReal"></textarea>
+                            <input type="hidden">
+                            <button type="submit" class="submitWrite" id="submitReal" onclick="submitDiscuss(this)">发布</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <p class="submitContent">发布评论</p>
+        <div class="userInfo">
+            <div class="inputOne">
+                <div class="InputUUID">
+                    <i ><img th:src="@{https://www.tanxiangblog.com/images/bilibili.svg}" alt="bilibili的logo"></i>
+                    <input type="text" placeholder="b站uuid" readonly disabled>
+                </div>
+                <div class="InputName" id="nameIn">
+                    <i class="layui-icon layui-icon-username"></i>
+                    <input type="text" placeholder="用户名*" class="usernameI">
+                </div>
+            </div>
+            <div class="inputTwo">
+                <div class="InputEmail">
+                    <i class="layui-icon layui-icon-email"></i>
+                    <input type="text" placeholder="邮箱*" class="emailI">
+                </div>
+                <div class="InputHeader" id="imageIn">
+                    <i class="layui-icon layui-icon-picture"></i>
+                    <input type="text" placeholder="头像链接" class="imageI">
+                </div>
+            </div>
+        </div>
+        <div class="writePanel">
+            <textarea class="write" id="RealText"></textarea>
+            <button type="submit" class="submitWrite" id="RealSubmit">发布</button>
+        </div>
+    </li>
+</ul>
+<div id="shangxia2" th:fragment="rocket">
+  <span id="gotop">
+    <img th:src="@{https://www.tanxiangblog.com/images/huojian.svg}" alt="返回顶部小火箭">
+  </span>
+</div>
+<img th:src="@{https://api.oss.tanxiangblog.com/images/users/head.png}" alt="管理员的头像" class="images" th:fragment="imgages">
+</body>
+</html>

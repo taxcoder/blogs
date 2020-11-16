@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tanx.blogs.dao.archives.ArchivesMapping">
+    <select id="queryArchivesByIdOrUploadTimeCount" resultType="_int">
+        select count(1) from `archives` where `archivesId` = #{archivesId} or `uploadTime` like #{uploadTime}
+    </select>
+
+    <select id="queryArchivesByIdOrUploadTime" resultType="map">
+        select * from `archives` where `archivesId` = #{archivesId} or `uploadTime` like #{uploadTime} order by uploadTime desc limit #{current},#{display}
+    </select>
+
+    <select id="queryArchivesByTitleAndUploadTimeCount" resultType="_int" parameterType="map">
+        select count(1) from `archives` where `title` like #{title} or `uploadTime` like #{uploadTime}
+    </select>
+
+    <select id="queryArchivesByTitleAndUploadTime" resultType="map">
+        select * from `archives` where `title` like #{title} or `uploadTime` like #{uploadTime} order by uploadTime desc limit #{current},#{display}
+    </select>
+
+    <select id="queryArchivesByIdAndTag" resultMap="obtain">
+        select a.archivesId,a.title,a.subtitle,a.typeId,a.goodNumber,a.readNumber,a.uploadTime,a.address,t.tagId,t.tagName,a.discussNumber from (select a.*,ar.tagId from `archivesandtag` as ar,`archives` as a
+        where a.archivesId = ar.archivesId and a.archivesId = #{archivesId}) as a,`tag` as t where t.tagId = a.tagId;
+    </select>
+
+    <resultMap id="obtain" type="com.tanx.blogs.pojo.model.Archives">
+        <result property="archivesId" column="archivesId"/>
+        <result property="title" column="title"/>
+        <result property="subtitle" column="subtitle"/>
+        <result property="typeId" column="typeId"/>
+        <result property="goodNumber" column="goodNumber"/>
+        <result property="readNumber" column="readNumber"/>
+        <result property="uploadTime" column="uploadTime"/>
+        <result property="address" column="address"/>
+        <result property="discussNumber" column="discussNumber"/>
+        <collection property="tags" ofType="com.tanx.blogs.pojo.model.Tag">
+            <result property="tagId" column="tagId"/>
+            <result property="tagName" column="tagName"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryArchivesSearch" parameterType="java.util.Map" resultType="com.tanx.blogs.pojo.model.Archives">
+        select * from `archives`
+        <where>
+            <if test="archivesId != null and archivesId != ''">
+                `archivesId` = #{archivesId}
+            </if>
+            <if test="title != null and title != ''">
+                and `title` like #{title}
+            </if>
+            <if test="uploadTime != null and uploadTime != ''">
+                and`uploadTime` like #{uploadTime}
+            </if>
+        </where>
+        order by `uploadTime` desc limit #{current},#{showPage}
+    </select>
+
+    <select id="queryArchivesSearchCount" parameterType="java.util.Map" resultType="_int">
+        select count(1) from `archives`
+        <where>
+            <if test="archivesId != null and archivesId != ''">
+                `archivesId` = #{archivesId}
+            </if>
+            <if test="title != null and title != ''">
+                and `title` like #{title}
+            </if>
+            <if test="uploadTime != null and uploadTime != ''">
+                and`uploadTime` like #{uploadTime}
+            </if>
+        </where>
+    </select>
+</mapper>

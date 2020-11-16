@@ -1,0 +1,136 @@
+.friend{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.friend .friendContent{
+    width: 900px;
+    margin-top: 50px;
+    min-height: 100px;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #888888;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+}
+
+.friend .friendContent .friendTips{
+    width: 95%;
+    margin: 0 auto;
+    height: 100px;
+}
+
+.friend .friendContent .friendTips .friendName{
+    width: 100%;
+    text-align: left;
+    height: 50%;
+    color: cornflowerblue;
+    font-size: 23px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.friend .friendContent .friendTips .feel{
+    width: 100%;
+    text-align: left;
+    height: 50%;
+    line-height: 50px;
+    font-size: 14px;
+    color: #63716f;
+    position: relative;
+}
+
+.friend .friendContent .friendTips .feel > a{
+    position: absolute;
+    right: 0;
+    width: 70px;
+    top: 10px;
+    height: 30px;
+    border: none;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 4px;
+    background: #38c3e4;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.friend .friendContent .friendHr{
+    width: 95%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: left;
+    color: #888888;
+}
+
+.friend .friendContent .friendHr > span{
+    color: black;
+}
+
+.friend .friendContent ul{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.friend .friendContent ul .friendList{
+    width: 30%;
+    height: 150px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.friend .friendContent ul .friendList .friendInfo{
+    display: flex;
+    align-items: self-end;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    height: 75%;
+    color:black;
+    flex-wrap: wrap;
+    border-radius: 3px;
+    background: #eaecec;
+}
+
+.friend .friendContent ul .friendList .friendInfo .friendBlogName{
+    width: 90%;
+    position: absolute;
+    font-size: 18px;
+    top: 42px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.friend .friendContent ul .friendList .friendInfo .friendBlogContent{
+    width: 80%;
+    position: absolute;
+    bottom: 18px;
+    overflow: hidden;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.friend .friendContent ul .friendList .friendInfo > img{
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    width: 70px;
+    transition: 0.2s;
+}
+
+.friend .friendContent ul .friendList .friendInfo > img:hover{
+    transform: rotate(360deg);
+    width: 80px;
+}

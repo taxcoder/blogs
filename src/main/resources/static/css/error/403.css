@@ -1,0 +1,171 @@
+ body{
+    background-color: #0b181c;
+    /* Edge 滚动条*/
+    overflow:-moz-scrollbars-none;
+    -ms-overflow-style:none;
+    -moz-scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.error  .errorContent{
+    min-width: 288px;
+    min-height: 460px;
+    width: 15%;
+    height: 50%;
+    background-color: #0b181c;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error .errorContent .errorIcon{
+    width: 85%;
+    height: 90%;
+}
+
+.error .errorContent .errorIcon .errorContentIcon{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+
+}
+
+.error .errorContent .errorIcon .errorContentIcon .yl-image{
+    width: 70%;
+    height: 70%;
+    position: relative;
+    background-image: url("https://www.tanxiangblog.com/images/dogHead.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: run 1s infinite alternate-reverse;
+    -webkit-animation: run 1s infinite alternate-reverse;
+    -moz-animation: run 1s infinite alternate-reverse;
+    -o-animation: run 1s infinite alternate-reverse;
+}
+
+.error .errorContent .errorIcon .errorContentIcon .Content404{
+    height: 30px;
+}
+
+.error .errorContent .errorIcon .errorContentIcon .Content404 > span{
+    color: white;
+    font-size: 14px;
+}
+
+@-webkit-keyframes run {
+    from{
+        top: 60px;
+    }
+
+    to{
+        top: -20px;
+    }
+}
+
+@-moz-keyframes run {
+    from{
+        top: 60px;
+    }
+
+    to{
+        top: -50px;
+    }
+}
+
+@-ms-keyframes run {
+    from{
+        top: 60px;
+    }
+
+    to{
+        top: -50px;
+    }
+}
+
+@-o-keyframes run {
+    from{
+        top: 60px;
+    }
+
+    to{
+        top: -50px;
+    }
+}
+
+@-webkit-keyframes run {
+    from{
+        top: 60px;
+    }
+
+    to{
+        top: -50px;
+    }
+}
+
+.error .errorContent .errorIcon .errorA{
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error .errorContent .errorIcon .errorA > a{
+    width: 175px;
+    height: 50px;
+    border-radius: 100px;
+    background: none;
+    color: wheat;
+    border: 1px solid #b0b0b0;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    animation: change 1s infinite alternate-reverse ease;
+    -webkit-animation: change 1s infinite alternate-reverse ease;
+    -moz-animation: change 1s infinite alternate-reverse ease;
+    -o-animation: change 1s infinite alternate-reverse ease;
+}
+
+.error .errorContent .errorIcon .errorA > a:hover{
+    animation: change 1s infinite alternate-reverse paused;
+    -webkit-animation: change 1s infinite alternate-reverse paused;
+    -moz-animation: change 1s infinite alternate-reverse paused;
+    -o-animation: change 1s infinite alternate-reverse paused;
+
+}
+
+@keyframes change {
+    from{
+        color: #060606;
+        background: #9b9281 0 100%;
+    }
+    to{
+        color: white;
+        background: none 0 0;
+    }
+}

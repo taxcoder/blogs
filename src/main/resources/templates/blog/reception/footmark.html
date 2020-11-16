@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tree的博客-我的归档</title>
+    <div th:replace="~{common/LoadCommon::icon}"></div>
+    <link rel="stylesheet" th:href="@{/css/reception/footmark/footmark.css}">
+    <link rel="stylesheet" href="/css/common.css">
+    <div th:replace="~{common/LoadCommon::loadCss}"></div>
+</head>
+<body>
+<div th:replace="~{common/common::user}"></div>
+<div th:replace="~{common/common::header(active='footmark')}"></div>
+<div class="side-body">
+   <div class="main-body">
+       <div class="dataCenter">
+           <div th:replace="~{common/common::left-area}"></div>
+           <div class="middle-area" >
+               <div class="middle-area-footmark">
+                   <input type="hidden" id="pageNumber" th:value="${application.archives.getPageNumber()}">
+                   <div class="middle-area-footmark-back">
+                       <div class="top-ring"></div>
+                       <ul>
+                           <li th:each="archive:${application.archives.getArchivesData()}">
+                               <div class="part">
+                                   <div class="ring">
+                                       <i class="layui-icon layui-icon-circle-dot"></i>
+                                       <span class="year" th:text="${#dates.format(archive.uploadTime,'yyyy年')}"></span>
+                                       <span class="month-day" th:text="${#dates.format(archive.uploadTime,'MM月dd日')}"></span>
+                                   </div>
+                                   <div class="frame">
+                                       <div class="context">
+                                           <div class="context-div">
+                                               <a th:href="@{'/archives/'+${archive.archivesId}}" th:title="${archive.title}"><p th:text="${archive.title}"></p></a>
+                                           </div>
+                                           <div class="context-last">
+                                               <div class="archivesType">
+                                                   <i class="layui-icon layui-icon-note"></i>
+                                                   <a th:href="@{'/home?type='+${archive.typeId}}"><span th:text="${archive.archivesTypeName}"></span></a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                       </ul>
+                       <div th:replace="~{common/common::page}"></div>
+                   </div>
+               </div>
+           </div>
+           <div th:replace="~{common/common::right-area}"></div>
+       </div>
+   </div>
+</div>
+<div th:replace="~{common/common::rocket}"></div>
+<div th:replace="~{blog/reception/home::footer}"></div>
+<div th:replace="~{common/LoadCommon::loadJS}"></div>
+<script type="text/javascript" th:src="@{/js/reception/footmark/footmark.js}"></script>
+</body>
+</html>

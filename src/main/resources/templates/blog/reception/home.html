@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>tree的博客-我的个人小站</title>
+    <meta name="description" content="tree的博客,自建的个人小站,不定期分享自己学到的新知识,利用写文章将知识进一步进行巩固,加深自己对于技术的理解。"/>
+    <meta name="keywords" content="tree的博客,个人博客,个人网站"/>
+    <div th:replace="~{common/LoadCommon::icon}"></div>
+    <link rel="stylesheet" th:href="@{/css/reception/home/home.css}">
+    <link rel="stylesheet" href="/css/common.css">
+    <div th:replace="~{common/LoadCommon::loadCss}"></div>
+</head>
+<body>
+<div th:replace="~{common/common::user}"></div>
+<div th:replace="~{common/common::header(active='home')}"></div>
+<div class="middle">
+    <div class="middle-auto">
+        <div class="middle-left">
+            <div th:replace="~{common/common::left-area}"></div>
+        </div>
+        <div class="middle-between">
+            <input type="hidden" th:value="${application.archives.getPageNumber()}" id="pageNumber">
+            <input type="hidden" th:if="${tagData!=null}" th:value="${tagData.getTagName()}" id="tagName">
+            <input type="hidden" th:if="${data!=null}" th:value="${data}" id="data">
+            <input type="hidden" th:value="${typeName}" id="typeName">
+            <div class="middle-between-list">
+                <ul>
+                    <li th:each="archive:${application.archives.getArchivesData()}">
+                        <div class="middle-between-list-article">
+                            <div class="middle-between-list-article-img lazy"></div>
+                            <div class="middle-between-list-article-name">
+                                <p><a target="_blank" th:href="@{'/archives/'+${archive.archivesId}}" th:text="${archive.title}"></a></p>
+                            </div>
+                            <div class="middle-between-list-article-info">
+                                <p th:text="${archive.subtitle}"></p>
+                            </div>
+                            <div class="middle-between-list-article-record">
+                                <div class="operation">
+                                    <i class="layui-icon layui-icon-time"></i>&nbsp;<span
+                                        th:text="${#dates.format(archive.uploadTime,'yyyy-MM-dd')}"></span>
+                                </div>
+                                <div class="operation">
+                                    <i class="layui-icon layui-icon-face-surprised"></i>&nbsp;<span
+                                        th:text="${archive.readNumber}"></span>个阅读
+                                </div>
+                                <div class="operation">
+                                    <i class="layui-icon layui-icon-face-surprised"></i>&nbsp;<span
+                                        th:text="${archive.discussNumber}"></span>个评论
+                                </div>
+                                <div class="operation">
+                                    <i class="layui-icon layui-icon-praise"></i>&nbsp;<span
+                                        th:text="${archive.goodNumber}"></span>个点赞
+                                </div>
+                                <div class="operation"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div th:replace="~{common/common::page}"></div>
+            </div>
+
+        </div>
+        <div class="middle-right">
+            <div th:replace="~{common/common::right-area}"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{common/common::rocket}"></div>
+<!--脚部信息-->
+<div class="footer" th:fragment="footer">
+    <p class="footer-right">
+        <a th:href="@{http://www.beian.miit.gov.cn}">湘ICP备20015010号-1</a>
+    </p>
+    <p class="footer-left">
+        ©2020&nbsp;tree的博客. All Rights Reserved.|本站在时间的侵蚀中,成功的抵御了
+        <span id="running-date"></span>
+    </p>
+</div>
+<div th:replace="~{common/LoadCommon::loadJS}"></div>
+<script type="text/javascript" th:src="@{/js/reception/home/home.js}"></script>
+</body>
+</html>

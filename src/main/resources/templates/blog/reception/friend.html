@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>tree的博客-我的友链</title>
+    <div th:replace="~{common/LoadCommon::icon}"></div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reception/friend/friend.css}">
+    <link rel="stylesheet" href="/css/common.css">
+    <div th:replace="~{common/LoadCommon::loadCss}"></div>
+</head>
+<body>
+<div th:replace="~{common/common::header}"></div>
+<div class="friend">
+    <div class="friendContent">
+        <div class="friendTips">
+            <div class="friendName">友链</div>
+            <div class="feel">在互联网中，我们都是孤独的个体，但我们可以成为彼此的朋友！<a th:href="@{/board}" target="_blank">留言板</a></div>
+        </div>
+        <div class="friendHr">#<span>&nbsp;好友</span></div>
+        <ul>
+            <li class="friendList" th:each="link:${links}">
+                <a class="friendInfo" target="_blank" th:href="@{${link.getFriendAddress()}}">
+                    <img th:src="@{${link.getFriendImage()}}" alt="博客图片">
+                    <input type="hidden" th:value="${link.getFriendAddress()}">
+                    <p class="friendBlogName" th:text="${link.getFriendName()}"></p>
+                    <p class="friendBlogContent" th:text="${link.getFriendBrief()}"></p>
+                </a>
+            </li>
+        </ul>
+        <div></div>
+    </div>
+</div>
+<div th:replace="~{common/common::rocket}"></div>
+<div th:replace="~{blog/reception/home::footer}"></div>
+<div th:replace="~{common/LoadCommon::loadJS}"></div>
+<script type="text/javascript" th:src="@{/js/reception/friend/friend.js}"></script>
+</body>
+</html>

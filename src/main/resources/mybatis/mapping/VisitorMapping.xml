@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanx.blogs.dao.visitor.VisitorMapping">
+    <select id="queryVisitorInfo" parameterType="com.tanx.blogs.pojo.model.Visitor" resultType="com.tanx.blogs.pojo.model.Visitor">
+        select * from `visitor` where visitorIp = #{visitorIp} and OperationSystem = #{operationSystem} and browser=#{browser}
+        <if test="browserVersion != null or browserVersion != ''">
+            and browserVersion=#{browserVersion}
+        </if>
+    </select>
+
+    <insert id="addVisitor" parameterType="com.tanx.blogs.pojo.model.Visitor">
+        insert into `visitor`(`visitorIp`,`OperationSystem`,`browser`,`browserVersion`,`country`,`province`,`city`) values(#{visitorIp},#{operationSystem},#{browser},#{browserVersion},#{country},#{province},#{city})
+    </insert>
+</mapper>

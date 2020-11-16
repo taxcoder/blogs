@@ -1,0 +1,224 @@
+.user .login-register .login-input{
+    width: 100%;
+    height: 100%;
+}
+
+.user .login-register .login-input .close{
+    width: 100%;
+    height: 10%;
+}
+
+.user .login-register .login-input .close .close-middle{
+    display: flex;
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.user .login-register .login-input .close .close-middle :nth-child(1){
+    font-size: 18px;
+    line-height: 44px;
+    text-align: left;
+    width: 50%;
+    color: #444343;
+    height: 100%;
+}
+
+.user .login-register .login-input .close .close-middle :nth-child(2){
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.user .login-register .login-input .close .close-middle :nth-child(2) > button{
+    cursor: pointer;
+    font-size: 26px;
+    text-align: right;
+    background: none;
+    border: none;
+}
+
+.user .login-register .login-input .input{
+    width: 100%;
+    height: 45%;
+}
+
+.user .login-register .login-input .input .username{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 50% ;
+}
+
+.user .login-register .login-input .input .username  .username-input{
+    border-bottom: 1px solid orange;
+    margin: 0 auto 15px auto;
+    width: 85%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.user .login-register .login-input .input .username  .username-input > input{
+    text-align: center;
+    font-size: 17px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.user .login-register .login-input .input .password{
+    width: 100%;
+    height: 50%;
+}
+
+.user .login-register .login-input .input .password  .password-input{
+    border-bottom: 1px solid orange;
+    margin: 0 auto 0 auto;
+    width: 85%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.user .login-register .login-input .input .password  .password-input > input{
+    text-align: center;
+    font-size: 17px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: none;
+}
+
+.user .login-register .login-input .input .password  :nth-child(2){
+    margin-top: 17px;
+}
+
+.user .login-register .login-input .input .password  :nth-child(2) > a{
+    color: #888888;
+    cursor: pointer;
+}
+
+.user .login-register .login-input .input .password  :nth-child(2) > a:hover{
+    color: #699df9;
+}
+
+.user .login-register .login-input .login{
+    width: 100%;
+    height: 20%;
+}
+
+.user .login-register .login-input .login .button-login{
+    cursor: pointer;
+    font-size: 20px;
+    width: 90%;
+    height: 60%;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    background: #FF7E00;
+    margin: 0 auto;
+    color: white;
+    border: none;
+}
+
+.user .login-register .login-input .login .button-login:hover{
+    background:rgb(227,121,18);
+}
+
+.user .login-register .login-input .login .register{
+    width: 100%;
+    height: 40%;
+}
+
+.user .login-register .login-input .login .register :nth-child(1){
+    padding-left: 20px;
+    display: inline-block;
+    cursor: pointer;
+    color: #888888;
+    font-size: 16px;
+    float: left;
+    line-height: 35.19px;
+}
+
+.user .login-register .login-input .login .register :nth-child(1):hover{
+    color: cornflowerblue;
+}
+
+.user .login-register .login-input .login .register :nth-child(2){
+    padding-right: 20px;
+    display: inline-block;
+    cursor: pointer;
+    color: #888888;
+    font-size: 16px;
+    float: right;
+    line-height: 35.19px;
+}
+
+.user .login-register .login-input .login .register :nth-child(2):hover{
+    color: cornflowerblue;
+}
+
+.user .login-register .login-input .other{
+    width: 100%;
+    height: 25%;
+}
+
+.user .login-register .login-input .other :nth-child(1){
+    font-size: 17px;
+    width: 100%;
+    height: 35%;
+    color: black;
+}
+
+.user .login-register .login-input .other :nth-child(2){
+    height: 50%;
+    width: 100%;
+}
+
+.user .login-register .login-input .other :nth-child(2) table{
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+}
+
+.user .login-register .login-input .other :nth-child(2) table tr{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user .login-register .login-input .other :nth-child(2) table tr td{
+    cursor: pointer ;
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+
+.user .login-register .login-input .other :nth-child(2) table tr td img{
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+}
+
+@keyframes  big{
+    100%{
+        transform: scale(1.2);
+    }
+}

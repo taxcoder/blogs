@@ -1,0 +1,662 @@
+@font-face {
+    font-family: autumn;
+    src: url("/font/stone-Medium.ttf");
+}
+
+body{
+    position: relative;
+}
+
+.friendLink{
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: fixed;
+    background: rgba(0,0,0,0.65);
+}
+
+.friendLink .friendLinkContent{
+    position: absolute;
+    top: 150px;
+    width: 350px;
+    height: 450px;
+    background: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.friendLink .friendLinkContent .friendLinkClose{
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+
+.friendLink .friendLinkContent .friendLinkClose .friendLinkCloseTop{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    right: 7px;
+    position: absolute;
+    top: 7px;
+}
+
+.friendLink .friendLinkContent .friendLinkClose .friendLinkCloseTop > i{
+    font-size: 21px;
+    color: #505050;
+    cursor: pointer;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput{
+    width: 90%;
+    height: 80%;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-direction: column;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Web{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #59bccc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Web > i{
+    margin: 0 5px;
+    color: #6262dc;
+}
+
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Web > input{
+    border: none;
+    width: 95%;
+    height: 95%;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Image{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #59bccc;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Image > i{
+    margin: 0 5px;
+    color: #6262dc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Image > input{
+    border: none;
+    width: 95%;
+    height: 95%;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Name{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #59bccc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Name > i{
+    margin: 0 5px;
+    color: #6262dc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Name > input{
+    border: none;
+    width: 95%;
+    height: 95%;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Desc{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #59bccc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Desc > i{
+    margin: 0 5px;
+    color: #6262dc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Desc > input{
+    border: none;
+    width: 95%;
+    height: 95%;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Email{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    border-radius: 3px;
+    align-items: center;
+    border: 1px solid #59bccc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Email > i{
+    margin: 0 5px;
+    color: #6262dc;
+}
+
+.friendLink .friendLinkContent .friendLinkInfo .friendLinkInfoInput .friendLinkInfoInputDiv .Email > input{
+    border: none;
+    width: 95%;
+    height: 95%;
+}
+
+.friendLink .friendLinkContent .friendLinkSubmit{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.friendLink .friendLinkContent .friendLinkSubmit > button{
+    border: none;
+    width: 80px;
+    height: 40px;
+    border-radius: 3px;
+    background: cadetblue;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    font-family: autumn serif;
+}
+
+.board {
+    width: 100%;
+    min-height: 810px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.board .boardContent {
+    width: 700px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #888;
+    box-sizing: border-box;
+    margin-top: 25px;
+    background: white;
+    padding-bottom: 5px;
+    margin-bottom: 100px;
+}
+
+.board .boardContent .adminInfo{
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.board .boardContent .adminInfo .siteInformation > h3{
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+}
+
+.board .boardContent .adminInfo .siteInformation button{
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    border: 0;
+    background: #048096;
+    color: white;
+    padding: 1px;
+    cursor: pointer;
+    width: 65px;
+    border-radius: 3px;
+    height: 26px;
+}
+
+.board .boardContent .adminInfo .siteInformation > p{
+    padding: 10px;
+    font-size: 15px;
+}
+
+.board .boardContent .adminInfo .siteInformation .simpleAsk{
+    margin-top: 10px;
+}
+
+.board .boardContent .adminInfo .simpleAsk > h3{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.board .boardContent .adminInfo .simpleAsk > p{
+    padding: 10px 10px 20px 10px;
+    font-size: 15px;
+    border-bottom: 1px solid #dcdbdb;
+}
+
+.board .boardContent ul li > .discussBoard{
+    margin: 0 15px 0 20px;
+    border-bottom: 1px solid #888888;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss .discussOne{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss .discussOne .discussUserInfo{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl{
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li{
+    margin-left: 55px;
+    border-top: 1px solid coral;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li  .discussDouble{
+    width: 100%;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .submitContent .discussClose{
+    width: 40px;
+    height: 25px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    background-color: #9e9eff;
+    color: white;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    margin: 5px 0 0 0;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputOne .InputUUID{
+    left: 0;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputOne .InputUUID > input{
+    width: 260px;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputOne .InputName > input{
+    width: 260px;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputTwo .InputEmail{
+    left: 0;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputTwo .InputEmail > input{
+    width: 260px;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .userInfo .inputTwo .InputHeader > input{
+    width: 260px;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .submitContent{
+    left: 0;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .writePanel .write{
+    width: 85%;
+    margin: 10px auto 0 0;
+}
+
+.board .boardContent ul li .discussBoard #oneDiscuss #doubleDiscussUl li .writePanel .submitWrite{
+    margin: 0;
+}
+
+.board .boardContent ul li .discussBoard .discussContent{
+    margin: 0 auto 10px 10px;
+    min-height: 50px;
+    display: block;
+    word-break: break-all;
+    text-align: left;
+}
+
+.board .boardContent ul li .discussBoard .reply{
+    display: flex;
+    width: 100%;
+    height: 35px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.board .boardContent ul li .discussBoard .reply > button{
+    height: 25px;
+    width: 40px;
+    border-radius: 4px;
+    border: none;
+    background: cadetblue;
+    color: white;
+    cursor: pointer;
+
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo > img{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    border: 2px solid #ccc;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo > div{
+    text-align: left;
+    position: relative;
+    left: 10px;
+    top: 0;
+    width: 145px;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div div{
+    height: 35px;
+    position: absolute;
+    display: flex;
+    top: -30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div div > .dName{
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div div .dName > a{
+    color: #208b96;
+    font-family: autumn serif;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div div > .dReply{
+    margin-right: 10px;
+    margin-top: -1px;
+    width: 30px;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div div > .dReplyName{
+    font-size: 18px;
+}
+
+.board .boardContent ul li .discussBoard .discussOne .discussUserInfo div > .dTime{
+    position: absolute;
+    top: 5px;
+    display: block;
+}
+
+.board .boardContent ul li .userInfo{
+    margin-top: 15px;
+}
+
+.board .boardContent ul li .userInfo .inputOne{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.board .boardContent ul li .userInfo .inputTwo{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputUUID{
+    height: 30px;
+    border: 1px solid #1296db;
+    border-radius: 3px;
+    display: flex;
+    position: absolute;
+    left: 20px;
+    align-items: center;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputUUID i{
+    margin: 0 5px;
+    font-size: 18px;
+    color: #1296db;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputUUID i > img{
+    width: 20px;
+    height: 20px;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputUUID > input{
+    height: 30px;
+    border: none;
+    width: 290px;
+    background: none;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputName{
+    height: 30px;
+    border: 1px solid #1296db;
+    border-radius: 3px;
+    display: flex;
+    position: absolute;
+    right: 0;
+    align-items: center;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputName > i{
+    margin: 0 5px;
+    font-size: 18px;
+    color: #1296db;
+}
+
+.board .boardContent ul li .userInfo .inputOne .InputName > input{
+    height: 30px;
+    width: 290px;
+    border: none;
+    right: 10px;
+    background: none;
+}
+
+.board .boardContent ul li .userInfo .inputTwo .InputEmail{
+    height: 30px;
+    border: 1px solid #1296db;
+    border-radius: 3px;
+    display: flex;
+    position: absolute;
+    left: 20px;
+    align-items: center;
+}
+
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > i{
+    margin: 0 5px;
+    font-size: 20px;
+    color: #1296db;
+}
+
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > input{
+    height: 30px;
+    width: 290px;
+    border: none;
+    background: none;
+}
+.board .boardContent ul li .userInfo .inputOne .InputUUID > input::-webkit-input-placeholder {
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputUUID > input:-moz-placeholder {/* Firefox 18- */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputUUID > input::-moz-placeholder{/* Firefox 19+ */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputUUID > input:-ms-input-placeholder {
+    color: #888888;
+}
+
+
+.board .boardContent ul li .userInfo .inputOne .InputName > input::-webkit-input-placeholder {
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputName > input:-moz-placeholder {/* Firefox 18- */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputName > input::-moz-placeholder{/* Firefox 19+ */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputOne .InputName > input:-ms-input-placeholder {
+    color: #888888;
+}
+
+
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > input::-webkit-input-placeholder {
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > input:-moz-placeholder {/* Firefox 18- */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > input::-moz-placeholder{/* Firefox 19+ */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputEmail > input:-ms-input-placeholder {
+    color: #888888;
+}
+
+
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > input::-webkit-input-placeholder {
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > input:-moz-placeholder {/* Firefox 18- */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > input::-moz-placeholder{/* Firefox 19+ */
+    color: #888888;
+}
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > input:-ms-input-placeholder {
+    color: #888888;
+}
+
+
+.board .boardContent ul li .userInfo .inputTwo .InputHeader{
+    height: 30px;
+    border: 1px solid #1296db;
+    border-radius: 3px;
+    display: flex;
+    position: absolute;
+    right: 0;
+    align-items: center;
+}
+
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > i{
+    margin:  0 5px;
+    font-size: 18px;
+    color: #1296db;
+}
+
+.board .boardContent ul li .userInfo .inputTwo .InputHeader > input{
+    width: 290px;
+    height: 30px;
+    border: none;
+    right: 10px;
+    background: none;
+}
+
+.board .boardContent ul li .submitContent{
+    display: flex;
+    position: relative;
+    font-size: 17px;
+    left: 20px;
+
+}
+
+.board .boardContent ul li .writePanel{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.board .boardContent ul li .writePanel .write{
+    padding: 3px;
+    word-break: break-all;
+    width: 82%;
+    height: 50px;
+    margin: 10px auto 0 auto;
+    border: 2px solid #7c7cd4;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.board .boardContent ul li .writePanel .submitWrite{
+    width: 70px;
+    height: 60px;
+    margin: 0 10px 0 0;
+    border: none;
+    background: darkcyan;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+#nameIn{
+    right: 10px!important;
+}
+
+#imageIn{
+    right: 10px!important;
+}
+
+.dName{
+    font-family: autumn serif!important;
+    color: #208b96!important;
+}
+
+body .msg-pwd .layui-layer-padding{
+    height: 25px!important;
+}

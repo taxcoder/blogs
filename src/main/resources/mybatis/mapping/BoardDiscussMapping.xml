@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanx.blogs.dao.boarddiscuss.BoardDiscussMapping">
+
+    <insert id="addBoardDiscuss" parameterType="com.tanx.blogs.pojo.model.BoardDiscuss">
+        insert into `boardDiscuss` (`username`,
+        <if test="websiteAddress!=null and websiteAddress!=''">
+            `websiteAddress`,
+        </if>
+        `content`,`writeTime`,`email`,
+        <if test="headImage!='' and headImage!=null">
+            `headImage`,
+        </if>
+        `reply`,`grade`,`attachmentDiscussId`) values (#{username},
+        <if test="websiteAddress!=null and websiteAddress!=''">
+            #{websiteAddress},
+        </if>
+       #{content},#{writeTime},#{email},
+        <if test="headImage!='' and headImage!=null">
+            #{headImage},
+        </if>
+        #{reply},#{grade},#{attachmentDiscussId});
+    </insert>
+
+</mapper>

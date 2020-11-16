@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanx.blogs.dao.friendlink.FriendLinkMapping">
+    <insert id="addFriendLink" parameterType="com.tanx.blogs.pojo.model.FriendLink">
+        insert into `friendLink`(`friendName`,
+        <if test="friendBrief != null and friendBrief !=''">
+            `friendBrief`,
+        </if>
+        `friendAddress`,`friendImage`)
+        values (#{friendName},
+        <if test="friendBrief != null and friendBrief !=''">
+            #{friendBrief},
+        </if>
+        #{friendAddress},#{friendImage});
+    </insert>
+
+    <select id="queryFriendLink" resultType="com.tanx.blogs.pojo.model.FriendLink">
+      SELECT * FROM `friendLink` where active = true ORDER BY RAND() LIMIT 30
+    </select>
+
+    <select id="queryFriendLinkData" resultType="com.tanx.blogs.pojo.model.FriendLink">
+        select * from `friendLink` where `active` = #{active}
+        <if test="friendName!=null and friendName!=''">
+            and `friendName` like #{friendName}
+        </if>
+        order by `friendLinkId` desc limit #{current},#{showPage}
+    </select>
+
+    <select id="queryFriendLinkDataCount" resultType="_int">
+        select count(1) from `friendLink` where `active` = #{active}
+        <if test="friendName!=null and friendName!=''">
+            and `friendName` like #{friendName}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,59 @@
+server:
+  port: 8088
+  max-http-header-size: 10485760
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+    accesslog:
+      encoding: UTF-8
+      enabled: true
+      file-date-format: yyyy-MM-dd
+
+spring:
+  mail:
+    username: QQ号
+    password: qq邮箱授权码
+    host: smtp.qq.com
+    default-encoding: UTF-8
+    port: 25
+    properties:
+      mail:
+        debug: true
+        smtp:
+          ssl:
+            enbale: true
+            socketFactory:
+              class: javax.net.ssl.SocketFactory
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    username: mysql账号
+    password: mysql密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: falses
+      poolPreparedStatements: true
+      filters: stat,wall,log4j
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mybatis/mapping/*.xml

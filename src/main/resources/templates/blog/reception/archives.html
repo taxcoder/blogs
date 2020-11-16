@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${archives.getTitle()}+'-我的文章'"></title>
+    <div th:replace="~{common/LoadCommon::icon}"></div>
+    <link rel="stylesheet" th:href="@{/css/reception/archives/archives.css}">
+    <link rel="stylesheet" href="/css/common.css">
+    <div th:replace="~{common/LoadCommon::loadCss}"></div>
+</head>
+<body onload="skipPage()">
+<div class="qr">
+    <div class="QR">
+        <div class="top">
+            <div class="support-author"><p>打赏作者</p></div>
+            <div class="close">
+                <button class="layui-icon layui-icon-close" onclick="closeQR()"></button>
+            </div>
+        </div>
+        <textarea type="hidden" id="dataInput" th:text="${content}"></textarea>
+        <div class="images">
+            <div></div>
+        </div>
+        <div class="family">
+            <div>
+                <button onclick="changeImageZ()">支付宝</button>
+            </div>
+            <div>
+                <button onclick="changeImageW()">微信</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{common/common::user}"></div>
+<div th:replace="~{common/common::header}"></div>
+
+<div class="archives">
+    <div class="archives-body">
+        <div th:replace="~{common/common::left-area}"></div>
+        <div class="archives-middle">
+            <div class="archives-middle-nav">
+                <p>
+                    <a th:href="@{/home}" th:text="首页"></a>
+                    <span class="thread">/</span>
+                    <a th:href="@{'/home/types/'+${type.getTypeName()}}" th:text="${type.getTypeName()}"></a>
+                    <span class="thread">/</span>
+                    <span class="content" th:text="${archives.getTitle()}"></span>
+                </p>
+            </div>
+
+            <div class="archives-middle-genre">
+                <div class="archives-middle-nav-main">
+                    <div class="snow"></div>
+                    <div class="archives-middle-nav-main-type">
+                        <span>
+                            <img th:src="@{https://www.tanxiangblog.com/images/type.svg}" alt="分类图片">
+                            <a th:href="@{'/home/types/'+${type.getTypeName()}}" th:text="${type.getTypeName()}"></a></span>
+                    </div>
+                </div>
+                <div class="archives-middle-nav-content">
+                    <div class="archives-title"><h1 th:text="${archives.getTitle()}"></h1></div>
+                    <div class="info">
+                        <p><i class="layui-icon layui-icon-date"></i>&nbsp;<span
+                                th:text="${#dates.format(archives.getUploadTime(),'yyyy-MM-dd')}"></span></p>
+                        <p><i class="layui-icon layui-icon-read"></i>&nbsp;<span
+                                th:text="${archives.readNumber}"></span>次阅读</p>
+                        <p><i class="layui-icon layui-icon-reply-fill"></i>&nbsp;<span
+                                th:text="${archives.discussNumber}"></span>次评论</p>
+                        <p><i class="layui-icon layui-icon-praise"></i>&nbsp;<span
+                                th:text="${archives.getGoodNumber()}"></span>次点赞</p>
+                    </div>
+                    <div class="say">
+                        <p th:text="${archives.getSubtitle()}"></p>
+                    </div>
+                    <div class="major" id="major"></div>
+                    <div class="attach">
+                        <div class="support">
+                            <button onclick="showQR()"><i class="layui-icon layui-icon-rmb"></i>&nbsp;赞赏</button>
+                        </div>
+                        <div class="good">
+                            <input type="hidden" id="archivesId" th:value="${archives.getArchivesId()}"/>
+                            <button onclick="praise(this)"><i class="layui-icon layui-icon-praise"></i>&nbsp;点赞</button>
+                        </div>
+                        <div class="attachTag">
+                            <img th:src="@{https://www.tanxiangblog.com/images/tag.svg}" alt="标签图片">
+                            <span th:if="${archives.getTags().size()>=1}"><a th:href="@{'/home/tags/'+${archives.getTags().get(0).getTagName()}}" th:text="${archives.getTags().get(0).getTagName()}"></a></span>
+                            <span th:if="${archives.getTags().size()>=2}"><a th:href="@{'/home/tags/'+${archives.getTags().get(1).getTagName()}}" th:text="${archives.getTags().get(1).getTagName()}"></a></span>
+                        </div>
+                        <div class="bottomTime" th:text="'最后编辑时间：'+${#dates.format(archives.getUploadTime(),'yyyy-MM-dd HH:mm:ss')}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="archivesDiscuss">
+                <div th:replace="~{common/common::discuss}"></div>
+            </div>
+        </div>
+        <div th:replace="~{common/common::right-area}"></div>
+    </div>
+</div>
+<div th:replace="~{common/common::rocket}"></div>
+<div th:replace="~{blog/reception/home::footer}"></div>
+<div th:replace="~{common/LoadCommon::loadJS}"></div>
+<script th:src="@{/js/reception/archives/archives.js}" type="text/javascript"></script>
+</body>
+</html>
