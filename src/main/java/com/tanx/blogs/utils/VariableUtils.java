@@ -47,7 +47,6 @@ public class VariableUtils {
     static {
         MAP.putIfAbsent("notice", "暂无！");
     }
-    public static final String ACCESSKEYSECRET = "mnv5Erp2oUer6t8A3mVVR4prFW0htX"; public static final String BUCKETNAME = "tanxiang"; public static final String OBJECTNAME = "images/";
     public static String minusOne() {
         return JSONUtils.toJSONString(InfoUtil.info(MINUSONE, "\u6570\u636E\u5F02\u5E38\uFF01"));
     }
