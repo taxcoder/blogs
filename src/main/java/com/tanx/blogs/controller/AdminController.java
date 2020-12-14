@@ -74,7 +74,7 @@ public class AdminController {
     /**
      * 忘记密码
      * @param request 请求
-     * @return 返回邮件的发送情况
+     * @return 返回件的发送情况
      */
     @ResponseBody
     @PostMapping({"/operate/emailSend"})

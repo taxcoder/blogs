@@ -42,8 +42,6 @@ public class VariableUtils {
     public static final String WINDOWSPATH = "C:" + File.separator + "OnePeopleBlogs" + File.separator + "blogs" + File.separator + "archives";
     public static final String LINUXIMAGEPATH = File.separator + "image" + File.separator + "files";
     public static final String WINDOWSIAMGEPATH = "C:" + File.separator + "image" + File.separator + "files";
-    public static final String ENDPOINT = "oss-cn-beijing.aliyuncs.com";
-    public static final String ACCESSKEYID = "LTAI4FzZHPq86RpS3FqTtbbc";
     public static final Map<String, Visitor> IP_MAP = new HashMap<String,Visitor>();
 
     static {
